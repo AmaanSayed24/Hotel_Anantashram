@@ -33,7 +33,7 @@
       "name": "Call to Reserve",
       "short_name": "Call",
       "description": "Call Hotel Anantashram to reserve a table",
-      "url": "tel:07744818888",
+      "url": "tel:+917744818888",
       "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
     },
     {

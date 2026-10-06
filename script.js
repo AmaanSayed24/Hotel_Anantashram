@@ -177,6 +177,7 @@ av breakpoint (1200px) in tailwind.config.js. */
 
   function filterCategory(category) {
     var tabs = document.querySelectorAll('.menu-tab');
+    var activeTab = null;
     tabs.forEach(function (tab) {
       var isActive = tab.id === 'tab-' + category;
       tab.classList.toggle('bg-primary', isActive);
@@ -187,7 +188,14 @@ av breakpoint (1200px) in tailwind.config.js. */
       tab.classList.toggle('text-on-surface-variant', !isActive);
       tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
       tab.setAttribute('tabindex', isActive ? '0' : '-1');
+      if (isActive) activeTab = tab;
     });
+    
+    /* Update aria-labelledby on menu-grid */
+    var menuGrid = document.getElementById('menu-grid');
+    if (menuGrid && activeTab) {
+      menuGrid.setAttribute('aria-labelledby', activeTab.id);
+    }
 
     var visibleIndex = 0;
     document.querySelectorAll('.menu-item').forEach(function (item) {
