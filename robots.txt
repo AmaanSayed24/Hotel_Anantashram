@@ -1,0 +1,5 @@
+# Hotel Anantashram - robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://hotelanantashram.com/sitemap.xml

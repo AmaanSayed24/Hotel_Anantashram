@@ -1,0 +1,41 @@
+{
+  "name": "Hotel Anantashram",
+  "short_name": "Anantashram",
+  "description": "Authentic Goan Seafood & Heritage Cuisine since 1905. Legendary King Fish Thali, fresh coastal catches, and time-honoured recipes.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fcf9f3",
+  "theme_color": "#7e260f",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["food", "lifestyle"],
+  "shortcuts": [
+    {
+      "name": "Call to Reserve",
+      "short_name": "Call",
+      "description": "Call Hotel Anantashram to reserve a table",
+      "url": "tel:07744818888",
+      "icons": [{ "src": "logo.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "WhatsApp Chat",
+      "short_name": "WhatsApp",
+      "description": "Chat on WhatsApp for reservations",
+      "url": "https://wa.me/917744818888",
+      "icons": [{ "src": "logo.png", "sizes": "192x192" }]
+    }
+  ]
+}

@@ -1,0 +1,325 @@
+/* ============================================================================
+   Hotel Anantashram - custom stylesheet
+   Design rationale & tokens: see DESIGN.md ("Coastal Heritage Luxury").
+   Tailwind utilities live in the markup; this file holds only the hand-written
+   layer: motion FX, navigation + drawer, menu rail, badges, modal and a11y.
+   ============================================================================ */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  /* Icon-font guard: Material Symbols is loaded from Google Fonts. If that
+     request fails or is slow, the ligature names (e.g. "arrow_forward")
+     would render as literal words and blow the layout out of its grid.
+     Pinning every glyph box to its 1em advance width and clipping it keeps
+     the layout intact either way. */
+  width: 1em;
+  min-width: 1em;
+  flex: 0 0 auto;
+  overflow: hidden;
+}
+
+.material-symbols-outlined[data-weight="fill"] {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+/* Hide scrollbar for category tabs */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 3D Perspective & Motion FX */
+.perspective-stage {
+  perspective: 1200px;
+}
+
+.reveal-3d {
+  opacity: 0;
+  transform: perspective(1000px) rotateX(12deg) translateY(40px) translateZ(-30px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.reveal-3d.active-in {
+  opacity: 1;
+  transform: perspective(1000px) rotateX(0deg) translateY(0) translateZ(0);
+}
+
+/* Subtle 3D Tilt Card Container */
+.tilt-card {
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.tilt-card:hover {
+  box-shadow: 0 20px 30px -10px rgba(126, 38, 15, 0.12), 0 8px 16px -6px rgba(0, 0, 0, 0.04);
+  border-color: rgba(158, 61, 36, 0.4);
+}
+
+/* Floating Keyframes */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(0.6deg);
+  }
+}
+
+@keyframes shimmerGold {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.shimmer-badge {
+  background: linear-gradient(90deg, rgba(255, 219, 210, 0.7) 0%, rgba(255, 237, 217, 0.95) 50%, rgba(255, 219, 210, 0.7) 100%);
+  background-size: 200% 100%;
+  animation: shimmerGold 4s infinite linear;
+}
+
+.glow-hover {
+  transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+}
+.glow-hover:hover {
+  box-shadow: 0 8px 24px -4px rgba(126, 38, 15, 0.35);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   UI POLISH LAYER — audit fixes (anchor offsets, nav, motion)
+   ============================================================ */
+
+/* Smooth anchor scrolling + offset so the sticky header never
+   covers the section heading that was just scrolled to. */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+section[id],
+#contact {
+  scroll-margin-top: 7rem;
+}
+
+/* ---------- Navigation links: gradient underline reveal ---------- */
+.nav-link {
+  position: relative;
+  padding-bottom: 0.35rem;
+  color: #56423d;
+  transition: color 0.25s ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #a13f26 0%, #c8933e 100%);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-link:hover,
+.nav-link:focus-visible,
+.nav-link.is-active {
+  color: #7e260f;
+}
+.nav-link:hover::after,
+.nav-link:focus-visible::after,
+.nav-link.is-active::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Mobile drawer ---------- */
+.drawer-panel {
+  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.drawer-backdrop {
+  transition: opacity 0.35s ease;
+}
+.drawer-link {
+  transition: background-color 0.25s ease, color 0.25s ease, padding-left 0.25s ease;
+}
+.drawer-link:hover,
+.drawer-link[aria-current="true"] {
+  padding-left: 0.5rem;
+  color: #7e260f;
+}
+
+/* ---------- Hero staggered entrance ---------- */
+@keyframes heroRise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero-stagger > * {
+  opacity: 0;
+  animation: heroRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(var(--i, 0) * 110ms);
+}
+
+/* ---------- Menu Explorer tab swap transition ---------- */
+@keyframes menuSwap {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.menu-swap {
+  animation: menuSwap 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ---------- Dietary + spice badges ---------- */
+.diet-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-width: 1.5px;
+  border-style: solid;
+  border-radius: 3px;
+  flex: 0 0 auto;
+}
+.diet-mark > span {
+  display: block;
+}
+.diet-veg {
+  border-color: #2f7d32;
+}
+.diet-veg > span {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: #2f7d32;
+}
+.diet-nonveg {
+  border-color: #9e3d24;
+}
+.diet-nonveg > span {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 7px solid #9e3d24;
+}
+.spice-level {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+}
+.spice-level .material-symbols-outlined {
+  font-size: 15px;
+}
+
+/* ---------- Scroll-shadow edges for the menu tab rail ---------- */
+.scroll-rail {
+  position: relative;
+}
+.scroll-rail::before,
+.scroll-rail::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 1rem;
+  width: 3rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+.scroll-rail::before {
+  left: 0;
+  background: linear-gradient(to right, #f6f3ed 12%, rgba(246, 243, 237, 0));
+}
+.scroll-rail::after {
+  right: 0;
+  background: linear-gradient(to left, #f6f3ed 12%, rgba(246, 243, 237, 0));
+}
+.scroll-rail.can-scroll-start::before,
+.scroll-rail.can-scroll-end::after {
+  opacity: 1;
+}
+
+/* ---------- Accessible dialog shell ---------- */
+.modal-shell {
+  transition: opacity 0.3s ease;
+}
+.modal-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+}
+.modal-shell[hidden] {
+  display: none;
+}
+body.modal-open,
+body.drawer-open {
+  overflow: hidden;
+}
+
+/* ---------- Skip link ---------- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: #7e260f;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ---------- Keyboard focus visibility ---------- */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #7e260f;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ---------- Respect reduced-motion preferences ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-3d {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .hero-stagger > * {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+}

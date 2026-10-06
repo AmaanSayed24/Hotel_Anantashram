@@ -1,0 +1,14 @@
+{
+  "name": "hotel-anantashram",
+  "version": "1.0.0",
+  "description": "Hotel Anantashram - Authentic Goan Seafood & Heritage Cuisine Website",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site - no build step required'",
+    "start": "npx serve ."
+  },
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+}
