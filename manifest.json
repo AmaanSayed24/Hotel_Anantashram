@@ -9,16 +9,22 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "logo.png",
+      "src": "icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "logo.png",
+      "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "categories": ["food", "lifestyle"],
@@ -28,14 +34,14 @@
       "short_name": "Call",
       "description": "Call Hotel Anantashram to reserve a table",
       "url": "tel:07744818888",
-      "icons": [{ "src": "logo.png", "sizes": "192x192" }]
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "WhatsApp Chat",
       "short_name": "WhatsApp",
       "description": "Chat on WhatsApp for reservations",
       "url": "https://wa.me/917744818888",
-      "icons": [{ "src": "logo.png", "sizes": "192x192" }]
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
     }
   ]
 }

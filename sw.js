@@ -2,10 +2,10 @@
    Hotel Anantashram - Service Worker (cache-first for static assets)
    ============================================================================ */
 
-const CACHE_NAME = 'anantashram-v1';
+const CACHE_NAME = 'anantashram-v2';
 const STATIC_ASSETS = [
   '/',
-  '/Index.html',
+  '/index.html',
   '/styles.css',
   '/script.js',
   '/tailwind.config.js',

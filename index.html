@@ -12,6 +12,11 @@
 <link href="manifest.json" rel="manifest"/>
 <meta content="#7e260f" name="theme-color"/>
 <meta content="#fcf9f3" name="msapplication-TileColor"/>
+<!-- Favicons -->
+<link href="favicon.ico" rel="icon" sizes="16x16 32x32 48x48"/>
+<link href="favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <!-- Google Fonts & Material Symbols -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -26,7 +31,7 @@
 <meta content="Hotel Anantashram | Authentic Goan Seafood & Heritage Cuisine" property="og:title"/>
 <meta content="Authentic Goan seafood & heritage cuisine since 1905. Legendary King Fish Thali, fresh daily catch, Xacutti, Sol Kadi. Reserve: 077448 18888." property="og:description"/>
 <meta content="https://hotelanantashram.com/" property="og:url"/>
-<meta content="hero-thali.png" property="og:image"/>
+<meta content="https://hotelanantashram.com/hero-thali.jpg" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="Goa" property="og:locality"/>
@@ -39,14 +44,14 @@
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Hotel Anantashram | Authentic Goan Seafood & Heritage Cuisine" name="twitter:title"/>
 <meta content="Authentic Goan seafood & heritage cuisine since 1905. Legendary King Fish Thali, fresh daily catch, Xacutti, Sol Kadi. Reserve: 077448 18888." name="twitter:description"/>
-<meta content="hero-thali.png" name="twitter:image"/>
+<meta content="https://hotelanantashram.com/hero-thali.jpg" name="twitter:image"/>
 <!-- JSON-LD Restaurant Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Restaurant",
   "name": "Hotel Anantashram",
-  "image": "hero-thali.png",
+  "image": "https://hotelanantashram.com/hero-thali.jpg",
   "url": "https://hotelanantashram.com/",
   "telephone": "+91-77448-18888",
   "address": {
@@ -267,7 +272,7 @@
 <!-- Hero Image Feature Card with 3D Tilt -->
 <div class="lg:col-span-6 relative hero-stagger">
 <div class="tilt-card group relative rounded-xl overflow-hidden shadow-2xl border-4 border-surface bg-surface-container-high" id="hero-tilt-card" style="--i:3">
-<img alt="Legendary King Fish Thali Feast at Hotel Anantashram" class="w-full h-[300px] sm:h-[380px] lg:h-[460px] object-cover object-center transform transition-transform duration-700 group-hover:scale-105" decoding="async" width="800" height="600" src="hero-thali.png"/>
+<img alt="Legendary King Fish Thali Feast at Hotel Anantashram" class="w-full h-[300px] sm:h-[380px] lg:h-[460px] object-cover object-center transform transition-transform duration-700 group-hover:scale-105" decoding="async" fetchpriority="high" width="800" height="600" src="hero-thali.jpg"/>
 <div class="absolute inset-0 bg-gradient-to-t from-on-background/70 via-transparent to-transparent"></div>
 <!-- Floating Pill Tags on Food Image -->
 <div class="absolute top-4 right-4 bg-surface/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-tertiary/20 flex items-center gap-1.5 shadow-md animate-float-slow">
