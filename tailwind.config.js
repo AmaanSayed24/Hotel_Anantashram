@@ -63,13 +63,21 @@ tailwind.config = {
         "error": "#ba1a1a",
         "on-primary": "#ffffff",
         "surface-container-lowest": "#ffffff",
-        "secondary": "#4f5e81"
+        "secondary": "#4f5e81",
+        "olive": "#5a6b4a",
+        "on-olive": "#f6f3ed",
+        "charcoal": "#1c1c18",
+        "espresso": "#141210"
       },
       "borderRadius": {
         "DEFAULT": "0.125rem",
-        "lg": "0.25rem",
-        "xl": "0.5rem",
-        "full": "0.75rem"
+        "sm": "0.125rem",
+        "md": "0.375rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "2xl": "1rem",
+        "3xl": "1.5rem",
+        "full": "9999px"
       },
       "spacing": {
         "space-sm": "0.5rem",
@@ -83,6 +91,8 @@ tailwind.config = {
         "gutter-mobile": "1rem"
       },
       "fontFamily": {
+        "sans": ["'Plus Jakarta Sans'", "system-ui", "sans-serif"],
+        "serif": ["'Playfair Display'", "Georgia", "serif"],
         "headline-lg-mobile": ["Playfair Display"],
         "title-md": ["Plus Jakarta Sans"],
         "body-lg": ["Plus Jakarta Sans"],

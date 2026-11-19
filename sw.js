@@ -2,7 +2,7 @@
    Hotel Anantashram - Service Worker (cache-first for static assets)
    ============================================================================ */
 
-const CACHE_NAME = 'anantashram-v2';
+const CACHE_NAME = 'anantashram-v3';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -12,9 +12,9 @@ const STATIC_ASSETS = [
   '/manifest.json',
   '/robots.txt',
   '/sitemap.xml',
-  'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap',
-  'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap',
-  'https://cdn.tailwindcss.com?plugins=forms,container-queries'
+  '/favicon.ico',
+  '/logo-header.png',
+  '/hero-thali.jpg'
 ];
 
 // Install - cache static assets
