@@ -6,7 +6,6 @@
 <title>Hotel Anantashram | Authentic Goan Seafood &amp; Heritage Cuisine in Vasco da Gama, Goa</title>
 <meta name="description" content="Authentic Goan seafood &amp; heritage cuisine since 1905 in Vasco da Gama, Goa. Legendary King Fish Thali, fresh daily catch, Xacutti, Sol Kadi. Reserve on 077448 18888."/>
 <link rel="canonical" href="https://hotelanantashram.com/"/>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com 'unsafe-eval'; img-src 'self' https: data:; style-src 'self' https: 'unsafe-inline'; font-src 'self' https: data:; connect-src 'self' https:; frame-src https://www.google.com; object-src 'none';"/>
 <link rel="manifest" href="manifest.json"/>
 <meta name="theme-color" content="#7e260f"/>
 <meta name="msapplication-TileColor" content="#fcf9f3"/>
@@ -20,6 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script src="tailwind.config.js"></script>
+
 <link href="styles.css" rel="stylesheet"/>
 <noscript><style>.hero-item,.reveal,.hero-media{opacity:1!important;transform:none!important}</style></noscript>
 <meta property="og:type" content="website"/>
@@ -104,7 +104,7 @@
   </div>
 </header>
 <!-- ===================== Nav Menu =====================
-     Mobile  (<lg) : bottom sheet — rises from screen bottom
+     Mobile  (<lg) : centered floating glass card
      Desktop (>=lg): frosted right side panel — slides from right
      ===================================================== -->
 <div id="mobile-menu" class="nav-overlay fixed inset-0 z-[70]" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Site navigation">
@@ -112,21 +112,18 @@
   <!-- Deep warm frosted backdrop -->
   <div class="nav-overlay-backdrop absolute inset-0" data-drawer-dismiss aria-hidden="true"></div>
 
-  <!-- Panel -->
+  <!-- Panel: Centered card on mobile, right side panel on desktop -->
   <div id="mobile-menu-panel" class="nav-overlay-panel">
 
-    <!-- Mobile-only pull handle -->
-    <div class="nav-pull-handle" aria-hidden="true"><span></span></div>
-
-    <!-- Panel top bar: label + close -->
+    <!-- Panel top bar: clean eyebrow label + close button (no repeated logo/name) -->
     <div class="nav-panel-header">
-      <span class="nav-panel-eyebrow">Navigate</span>
+      <span class="nav-panel-eyebrow">Explore</span>
       <button id="mobile-menu-close" type="button" class="nav-close-btn" aria-label="Close navigation menu">
         <span class="material-symbols-outlined text-[18px]" aria-hidden="true">close</span>
       </button>
     </div>
 
-    <!-- Nav tiles -->
+    <!-- Nav tiles: individual blunt tiles for each option -->
     <nav aria-label="Site navigation">
       <ul class="nav-tiles-list">
         <li class="nav-tile-item" style="--tile-i:0">
@@ -174,7 +171,7 @@
       </ul>
     </nav>
 
-    <!-- CTA block -->
+    <!-- Clean CTA block -->
     <div class="nav-cta-block nav-tile-item" style="--tile-i:6">
       <a href="https://wa.me/917744818888?text=Hello%20Hotel%20Anantashram%2C%20I%20would%20like%20to%20reserve%20a%20table." target="_blank" rel="noopener noreferrer" class="nav-cta-primary">
         <span class="material-symbols-outlined text-[17px]" aria-hidden="true">chat</span>
@@ -1708,3 +1705,4 @@
 <script src="script.js"></script>
 </body>
 </html>
+

@@ -403,7 +403,7 @@ body.modal-open {
 
 /* ============================================================
    Nav Menu — Premium Responsive Glass Design
-   Mobile  (<lg): bottom sheet, slides up from screen bottom
+   Mobile  (<lg): centered floating glass card with blunt corners
    Desktop (≥lg): frosted side panel, slides in from the right
    Brand palette: terracotta #7e260f, warm sand, espresso dark
    ============================================================ */
@@ -411,8 +411,9 @@ body.modal-open {
 /* ---- Shared backdrop ---- */
 .nav-overlay {
   display: flex;
-  align-items: flex-end;   /* positions bottom sheet at bottom */
+  align-items: center; /* Centered on mobile devices */
   justify-content: center;
+  padding: 1rem;
 }
 
 .nav-overlay-backdrop {
@@ -426,29 +427,26 @@ body.modal-open {
 
 .nav-overlay.is-open .nav-overlay-backdrop { opacity: 1; }
 
-/* ---- Mobile: bottom sheet ---- */
+/* ---- Mobile: centered floating card with blunt corners ---- */
 .nav-overlay-panel {
   position: relative;
-  width: 100%;
-  max-height: 88svh;
+  width: min(390px, calc(100vw - 2rem));
+  max-height: calc(100svh - 2.5rem);
   overflow-y: auto;
   overscroll-behavior: contain;
-  background: rgba(253, 250, 244, 0.90);
+  background: rgba(253, 250, 244, 0.92);
   backdrop-filter: blur(36px) saturate(190%);
   -webkit-backdrop-filter: blur(36px) saturate(190%);
   border: 1px solid rgba(221, 192, 185, 0.5);
-  border-top-left-radius: 28px;
-  border-top-right-radius: 28px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  padding: 0 1.25rem 1.5rem;
+  border-radius: 28px; /* Blunt rounded edges all around on mobile */
+  padding: 1.25rem 1.25rem 1.5rem;
   box-shadow:
-    0 -20px 60px -8px rgba(20, 14, 10, 0.4),
+    0 24px 64px -12px rgba(20, 14, 10, 0.45),
     0 0 0 1px rgba(255, 255, 255, 0.6) inset;
-  transform: translateY(100%);
+  transform: scale(0.92) translateY(12px);
   opacity: 0;
   transition:
-    transform 0.44s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
     opacity 0.3s ease;
   will-change: transform, opacity;
   scrollbar-width: thin;
@@ -456,22 +454,8 @@ body.modal-open {
 }
 
 .nav-overlay.is-open .nav-overlay-panel {
-  transform: translateY(0);
+  transform: scale(1) translateY(0);
   opacity: 1;
-}
-
-/* Pull handle (visible only on mobile) */
-.nav-pull-handle {
-  display: flex;
-  justify-content: center;
-  padding: 0.75rem 0 0.5rem;
-}
-.nav-pull-handle span {
-  display: block;
-  width: 36px;
-  height: 4px;
-  border-radius: 2px;
-  background: rgba(126, 38, 15, 0.22);
 }
 
 /* ---- Panel header ---- */
@@ -674,19 +658,19 @@ body.modal-open {
 @media (min-width: 1024px) {
   .nav-overlay {
     align-items: stretch;
-    justify-content: flex-end;
+    justify-content: flex-end; /* Right side panel on desktop as it was */
+    padding: 0;
   }
-  .nav-pull-handle { display: none; }
 
   .nav-overlay-panel {
-    width: 360px;
+    width: 380px;
     max-height: 100%;
     max-height: 100svh;
     height: 100%;
-    border-radius: 24px 0 0 24px;   /* blunt on the left, flush on the right */
-    padding: 2rem 1.5rem;
+    border-radius: 28px 0 0 28px; /* blunt on the left, flush on the right edge */
+    padding: 2rem 1.75rem;
     box-shadow:
-      -20px 0 60px -8px rgba(20, 14, 10, 0.3),
+      -24px 0 64px -10px rgba(20, 14, 10, 0.35),
       0 0 0 1px rgba(255, 255, 255, 0.5) inset;
     transform: translateX(100%);
     opacity: 0;
@@ -694,6 +678,7 @@ body.modal-open {
       transform 0.44s cubic-bezier(0.16, 1, 0.3, 1),
       opacity 0.3s ease;
   }
+
   .nav-overlay.is-open .nav-overlay-panel {
     transform: translateX(0);
     opacity: 1;

@@ -1,10 +1,11 @@
-/* ============================================================================
+﻿/* ============================================================================
    Tailwind (Play CDN) theme configuration - Hotel Anantashram.
    Token-for-token mirror of DESIGN.md: colours, type scale, spacing, radius.
-   Load order: Tailwind CDN script -> this file -> <body> markup.
+   Works in both browser (window.tailwind.config) and Node.js (module.exports).
    ============================================================================ */
 
-tailwind.config = {
+const tailwindConfig = {
+  content: ["./**/*.{html,js}"],
   darkMode: "class",
   theme: {
     extend: {
@@ -127,3 +128,13 @@ tailwind.config = {
     }
   }
 };
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = tailwindConfig;
+}
+if (typeof window !== 'undefined') {
+  window.tailwind = window.tailwind || {};
+  window.tailwind.config = tailwindConfig;
+}
+
+
